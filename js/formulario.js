@@ -1,5 +1,5 @@
 (function() {
-    emailjs.init("yEbios-kFmFzRQ7Q9");
+    emailjs.init("");
 })();
 
 const form = document.getElementById('meu-formulario');
@@ -9,8 +9,8 @@ const statusMensagem = document.getElementById('mensagem-status');
 form.addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    const serviceID = 'service_ihsb8ap';
-    const templateID = 'template_nopkzrc';
+    const serviceID = '';
+    const templateID = '';
 
     btnSubmit.textContent = 'Enviando...';
     btnSubmit.disabled = true;
