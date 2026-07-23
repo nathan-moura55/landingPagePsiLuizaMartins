@@ -625,11 +625,10 @@ h2, h3, h4, h5, h6 {
     background-color: #3e4929;
     padding: 30px 80px;
     width: 100%; 
-    box-sizing: border-box; /* Garante que o padding não estoure a largura total */
+    box-sizing: border-box; 
     z-index: 1000;
 }
 
-/* Logo */
 .footer-logo {
     display: flex;
     align-items: center;
@@ -650,7 +649,6 @@ h2, h3, h4, h5, h6 {
     display: block;
 }
 
-/* Informações de Contato */
 .footer-info {
     display: flex;             
     flex-direction: column;    
@@ -663,7 +661,6 @@ h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
 }
 
-/* Links Direitos (Desenvolvedor e Copyright) */
 .footer-links {
     display: flex;
     flex-direction: column;
@@ -677,7 +674,6 @@ h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-/* Estilização Geral para Links do Footer (Info e Créditos) */
 .footer-info a,
 .footer-links a {
     color: #FFEBE8;
@@ -691,8 +687,21 @@ h2, h3, h4, h5, h6 {
     text-decoration: underline;
 }
 
-/* Responsividade para Telas Menores (Celulares e Tablets) */
 @media (max-width: 768px) {
+    
+    .lacan,
+.saussure{
+    margin-top: 10px;
+    font-size: 1.0rem;
+    align-items: center;
+}
+
+    .frase-lacan,
+.frase-saussure{
+    font-size: 2.0rem;
+    align-items: center;
+}
+    
     .footer {
         flex-direction: column;
         gap: 25px;
@@ -701,7 +710,7 @@ h2, h3, h4, h5, h6 {
     }
 
     .footer-links {
-        text-align: center; /* Centraliza o texto no mobile */
+        text-align: center; 
     }
 
     .footer-logo {
@@ -710,9 +719,6 @@ h2, h3, h4, h5, h6 {
 }
 
 
-/* ==========================================
-   10. MEDIA QUERIES (RESPONSIVIDADE)
-   ========================================== */
 @media (max-width: 850px) {
     .conjunto-apresentacao {
         flex-direction: column;
@@ -769,7 +775,102 @@ h2, h3, h4, h5, h6 {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 851px) {
+    
+    p{
+        font-size: 20px;
+    }
+    
+    h1{
+        font-size: 38px;
+    }
+    .apresentacao {
+        background-image: url("../imagens/imagem1.jpg");
+        background-size: cover;
+        background-attachment: scroll;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+        min-height: auto; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px 15px 40px 15px; 
+    }
+
+    .conjunto-apresentacao {
+        display: flex;
+        flex-direction: column;
+        align-items: center !important; 
+        justify-content: center !important;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .logo-apresentacao {
+        display: none !important;
+    }
+
+    .imgLuiza {
+        width: 100%;
+        max-width: 320px !important;
+        height: auto;
+        max-height: none;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .texto-apresentação {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;     
+        justify-content: center !important;
+        text-align: center !important;      
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .texto-apresentação h1,
+    .texto-apresentação h2,
+    .texto-apresentação h3,
+    .texto-apresentação h4,
+    .titulo-apresentação {
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .texto-apresentação h1 {
+        font-size: 2.2rem !important;
+    }
+
+    .texto-apresentação h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .texto-apresentação h3 {
+        font-size: 1rem !important;
+    }
+
+    .texto-apresentação h4 {
+        font-size: 0.95rem !important;
+    }
+
+
+
+    .btn-agendar {
+        display: inline-block !important;
+        width: auto !important;
+        max-width: 280px !important;
+        margin: 10px auto 0 auto !important;
+        padding: 12px 30px !important;
+        font-size: 1.1rem !important;
+        text-align: center !important;
+    }
+
     .grupo-duplo {
         flex-direction: column;
     }
