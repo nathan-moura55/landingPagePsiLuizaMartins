@@ -28,9 +28,9 @@ body {
     font-weight: 400;
     display: flex;
     flex-direction: column;
-    padding-top: 50px; 
-}
-.lacan,
+    padding-top: 0 !important; 
+    margin: 0;
+},
 .saussure{
     font-family: 'Inria senif', serif;
     color: black;
@@ -76,50 +76,58 @@ h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(62, 73, 41, 0.97); 
-    backdrop-filter: blur(10px); 
-    -webkit-backdrop-filter: blur(10px);
-    padding: 25px;
+    background-color: #3e4929;
+    padding: 10px 50px;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%; 
+    width: 100%;
     z-index: 1000;
-    transition: transform 0.4s ease, opacity 0.4s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    height: 60px;
+    transition: transform 0.4s ease-in-out; 
 }
 
 .navbar.ocultar {
-    transform: translateY(-100%); 
-    opacity: 0;                   
+    transform: translateY(-100%);
 }
 
 .img-logo-nav {
-    width: 90px; 
-    height: auto; 
-    object-fit: contain;
+    max-width: 150px;
+    height: auto;
     display: block;
+    z-index: 1001;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
 }
 
 .Navbar-links {
-    list-style: none;
     display: flex;
+    list-style: none;
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
 
-.Navbar-links li {
-    margin-left: 20px;
-}
-
-.Navbar-links a {
-    color: white;
+.Navbar-links li a {
+    color: #FFEBE8;
     text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s;
+    font-size: 1.1rem;
+    font-family: 'Inria Serif', serif;
+    transition: opacity 0.3s ease;
 }
 
-.Navbar-links a:hover {
-    color: #915245;
+.Navbar-links li a:hover {
+    opacity: 0.8;
+}
+
+.hamburger-icon,
+.dark-blue,
+.menu-mobile-logo {
+    display: none !important;
 }
 
 
@@ -688,42 +696,159 @@ h2, h3, h4, h5, h6 {
 }
 
 @media screen and (max-width: 1024px) and (orientation: portrait), 
-       screen and (max-width: 767px) {
-    
-    h1 {
-        font-size: 34px !important;
-        text-align: center !important;
+       screen and (max-width: 860px) {
+
+    .navbar {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        padding: 15px 20px !important;
+        height: auto !important;
+        justify-content: flex-end !important;
     }
 
-    p {
-        font-size: 18px !important;
-        text-align: center !important;
-        line-height: 1.6;
-    }
-
-    .apresentacao {
-        background-attachment: scroll; 
-        padding: 50px 20px 40px 20px;
-        min-height: auto;
-    }
-
-    .conjunto-apresentacao {
-        flex-direction: column !important;
-        align-items: center !important; 
-        justify-content: center !important;
-        gap: 25px;
-        text-align: center !important;
-    }
-
-    .logo-apresentacao {
+    .navbar-logo {
         display: none !important;
     }
 
-    .imgLuiza {
-        width: 100%;
-        max-width: 350px !important;
+    .hamburger-icon {
+        display: flex !important;
+        position: fixed !important;
+        top: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        border-radius: 50%;
+        background: rgba(62, 73, 41, 0.85);
+        backdrop-filter: blur(4px);
+        justify-content: center;
+        align-items: center;
+        z-index: 1002 !important;
+        transition: transform 0.3s ease;
+    }
+
+    .hamburger-icon:hover {
+        transform: scale(1.08);
+    }
+
+    .icon-1, .icon-2, .icon-3 {
+        position: absolute;
+        width: 22px;
+        height: 3px;
+        background-color: #FFEBE8;
+        border-radius: 2px;
+        transition: all 400ms cubic-bezier(.84, .06, .52, 1.8);
+    }
+
+    .icon-1 { transform: translateY(-7px); }
+    .icon-2 { transform: translateY(0); }
+    .icon-3 { transform: translateY(7px); }
+
+    .icon-1.a { transform: rotate(45deg); }
+    .icon-2.c { opacity: 0; }
+    .icon-3.b { transform: rotate(-45deg); }
+
+    .nav-container {
+        background: #505E36;
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 0%;
+        z-index: 999;
+        opacity: 0;
+        overflow-y: auto;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding-top: 80px !important;
+        transition: all 600ms cubic-bezier(.62, .04, .3, 1.56);
+    }
+
+    .nav-container.show {
+        width: 80%;
+        opacity: 1;
+    }
+
+    .menu-mobile-logo {
+        display: block !important;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .img-menu-logo {
+        max-width: 160px;
         height: auto;
-        max-height: none;
+    }
+
+    .Navbar-links {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 25px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 20px !important;
+    }
+
+    .Navbar-links li a {
+        font-size: 1.3rem !important;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+
+    .dark-blue {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background: #6D382D;
+        height: 100vh;
+        width: 0%;
+        transition: all 500ms cubic-bezier(.62, .04, .3, 1.8);
+        z-index: 998;
+        opacity: 0;
+    }
+
+    .dark-blue.slide {
+        width: 85%;
+        opacity: 1;
+    }
+
+    .apresentacao,
+    .contato1,
+    .secao-formulario {
+        background-attachment: fixed !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        width: 100% !important;
+        min-height: auto !important;
+    }
+
+    .apresentacao { padding: 60px 20px 40px 20px !important; }
+    .contato1 { padding: 60px 20px 40px 20px !important; }
+    .secao-formulario { padding: 60px 20px !important; }
+
+    .conjunto-apresentacao {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        justify-content: center !important;
+        gap: 25px !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+
+    .logo-apresentacao { display: none !important; }
+
+    .imgLuiza {
+        width: 100% !important;
+        max-width: 320px !important;
+        height: auto !important;
+        max-height: none !important;
         margin: 0 auto !important;
         display: block !important;
     }
@@ -751,28 +876,17 @@ h2, h3, h4, h5, h6 {
         margin-right: auto !important;
     }
 
-    .texto-apresentação h1 {
-        font-size: 2.3rem !important;
-    }
-
-    .texto-apresentação h2 {
-        font-size: 1.4rem !important;
-    }
-
-    .texto-apresentação h3 {
-        font-size: 1.1rem !important;
-    }
-
-    .texto-apresentação h4 {
-        font-size: 1rem !important;
-    }
+    .texto-apresentação h1 { font-size: 2.2rem !important; }
+    .texto-apresentação h2 { font-size: 1.3rem !important; }
+    .texto-apresentação h3 { font-size: 1rem !important; }
+    .texto-apresentação h4 { font-size: 0.95rem !important; }
 
     .btn-agendar {
         display: inline-block !important;
         width: auto !important;
         max-width: 280px !important;
         margin: 15px auto 0 auto !important;
-        padding: 14px 32px !important;
+        padding: 12px 30px !important;
         font-size: 1.1rem !important;
         text-align: center !important;
     }
@@ -781,14 +895,14 @@ h2, h3, h4, h5, h6 {
         flex-direction: column-reverse !important;
         align-items: center !important;
         text-align: center !important;
-        gap: 30px;
+        gap: 30px !important;
     }
 
     .foto-container {
-        width: 100%;
-        max-width: 320px;
-        height: 400px; 
-        margin: 0 auto;
+        width: 100% !important;
+        max-width: 300px !important;
+        height: 380px !important; 
+        margin: 0 auto !important;
     }
 
     .lacan,
@@ -819,18 +933,13 @@ h2, h3, h4, h5, h6 {
     }
 
     .footer {
-        padding: 30px 20px;
+        padding: 30px 20px !important;
         flex-direction: column !important;
-        gap: 25px;
+        gap: 25px !important;
         text-align: center !important;
         align-items: center !important;
     }
 
-    .footer-links {
-        text-align: center !important; 
-    }
-
-    .footer-logo {
-        justify-content: center !important;
-    }
+    .footer-links { text-align: center !important; }
+    .footer-logo { justify-content: center !important; }
 }
