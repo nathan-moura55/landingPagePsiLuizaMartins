@@ -32,7 +32,7 @@ body {
 }
 .lacan,
 .saussure{
-    font-family: 'Iria senif', serif;
+    font-family: 'Inria senif', serif;
     color: black;
     font-size: 1.5rem;
     font-weight: 50;
@@ -40,7 +40,7 @@ body {
 
 .frase-lacan,
 .frase-saussure{
-    font-family: 'Iria senif', serif;
+    font-family: 'Inria senif', serif;
     color: black;
     font-size: 2.5rem;
     font-weight: 300;
@@ -93,11 +93,11 @@ h2, h3, h4, h5, h6 {
     opacity: 0;                   
 }
 
-.navbar-logo a {
-    color: white;
-    font-size: 1.5rem;
-    text-decoration: none;
-    font-weight: bold;
+.img-logo-nav {
+    width: 90px; 
+    height: auto; 
+    object-fit: contain;
+    display: block;
 }
 
 .Navbar-links {
@@ -114,7 +114,7 @@ h2, h3, h4, h5, h6 {
 .Navbar-links a {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
     transition: color 0.3s;
 }
 
@@ -150,6 +150,15 @@ h2, h3, h4, h5, h6 {
     max-width: 1200px;
 }
 
+.logo-apresentacao {
+    width: 350px !important;       /* Aumentamos a largura para 350px */
+    max-width: none !important;    /* Remove qualquer limite de largura anterior */
+    height: auto !important;       /* Mantém a proporção sem distorcer */
+    max-height: none !important;   /* Remove qualquer limite de altura anterior */
+    display: block !important;
+    margin: 0 auto 20px auto !important;
+}
+
 .imgLuiza {
     width: 100%;
     max-width: 450px; 
@@ -161,9 +170,9 @@ h2, h3, h4, h5, h6 {
 }
 
 .icone-detalhe {
-    width: 35px;
-    height: 35px;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     margin-bottom: 10px;
 }
 
@@ -534,6 +543,77 @@ h2, h3, h4, h5, h6 {
     transform: translateY(-2px);
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.modal-conteudo {
+    background-color: #ffffff;
+    padding: 32px 28px;
+    border-radius: 12px;
+    max-width: 380px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-top: 5px solid #663B32;
+    animation: surgirmodal 0.3s ease-out;
+}
+
+.modal-conteudo h3 {
+    color: #663B32;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.modal-conteudo p {
+    color: #555555;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.btn-modal {
+    background-color: #6D382D;
+    color: #ffffff;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+}
+
+.btn-modal:hover {
+    background-color: #522920;
+}
+
+.btn-modal:active {
+    transform: scale(0.98);
+}
+
+@keyframes surgirmodal {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* ==========================================
    9. FOOTER
@@ -545,7 +625,15 @@ h2, h3, h4, h5, h6 {
     background-color: #3e4929;
     padding: 30px 80px;
     width: 100%; 
+    box-sizing: border-box; /* Garante que o padding não estoure a largura total */
     z-index: 1000;
+}
+
+/* Logo */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    max-width: 180px;
 }
 
 .footer-logo a {
@@ -555,11 +643,18 @@ h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
-/* Informações de Contato (Esquerda/Centro) */
+.img-footer-logo {
+    width: 140px; 
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* Informações de Contato */
 .footer-info {
-    display: flex;             /* Adicionado para os itens respeitarem a direção vertical */
-    flex-direction: column;    /* Alinha CRP, E-mail, Telefone um abaixo do outro */
-    gap: 8px;                  /* Espaçamento legível entre as linhas */
+    display: flex;             
+    flex-direction: column;    
+    gap: 8px;                  
     color: #FFEBE8;
 }
 
@@ -568,12 +663,12 @@ h2, h3, h4, h5, h6 {
     font-size: 0.95rem;
 }
 
-/* Links do Desenvolvedor e Copyright (Direita) */
+/* Links Direitos (Desenvolvedor e Copyright) */
 .footer-links {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    text-align: right;          /* Garante alinhamento bonito à direita */
+    text-align: right;
 }
 
 .footer-links p {
@@ -582,23 +677,36 @@ h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
+/* Estilização Geral para Links do Footer (Info e Créditos) */
+.footer-info a,
 .footer-links a {
-    color: #FFEBE8;
-    text-decoration: none;
-    font-size: 0.95rem;
-    margin: 0;
-}
-
-/* CORREÇÃO DO LINK DO DESENVOLVEDOR */
-.footer-info a {
     color: #FFEBE8;
     text-decoration: none;
     transition: opacity 0.3s ease;
 }
 
-.footer-info a:hover {
+.footer-info a:hover,
+.footer-links a:hover {
     opacity: 0.8;
     text-decoration: underline;
+}
+
+/* Responsividade para Telas Menores (Celulares e Tablets) */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .footer-links {
+        text-align: center; /* Centraliza o texto no mobile */
+    }
+
+    .footer-logo {
+        justify-content: center;
+    }
 }
 
 

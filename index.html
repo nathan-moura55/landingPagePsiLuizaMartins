@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Psi Luiza Martins</title>
     <link rel="stylesheet" href="./css/Styles.css">
+    <link rel="icon" type="image/png" href="./imagens/icon.png">
 </head>
 
 <body>
     <nav class="navbar">
         <div class="navbar-logo">
-            <a href="#">Luiza psi</a>
+            <img src="./imagens/logo_Redes_sociais_branca_escrita.png" alt="Logo Luiza Psi" class="img-logo-nav">
         </div>
         <ul class="Navbar-links">
             <li><a href="#inicio">Início</a></li>
@@ -27,7 +28,7 @@
             <img src="./imagens/WhatsApp Image 2026-07-21 at 23.46.42.jpeg" alt="Psi Luiza" class="imgLuiza">
 
             <div class="texto-apresentação">
-                <img src="./imagens/instagram.png" alt="Logo Luiza Martins" class="logo-apresentacao">
+                <img src="./imagens/logo-apresentacao.png" alt="Logo Luiza Martins" class="logo-apresentacao">
                 <h1 class="titulo-apresentação">Luiza Martins</h1>
                 <h2>Psicóloga e Psicanalista Lacaniana</h2>
                 <h3>CRP 04/79833</h3>
@@ -133,9 +134,10 @@
         </div>
 
         <div class="conjunto-contato1-icons">
-            <a href="https://www.instagram.com/luizamartinspsi" target="_blank"><img src="./imagens/instagram.png" alt="Instagram"></a>
+            <a href="https://www.instagram.com/luizamartinspsi" target="_blank"><img src="./imagens/instagram.png"
+                    alt="Instagram"></a>
             <a href="https://wa.me/5534997227750" target="_blank"><img src="./imagens/whatsapp.png" alt="Whatsapp"></a>
-            <a href="#secao-formulario" target="_blank"><img src="./imagens/e-mail.png" alt="E-mail"></a>
+            <a href="#secao-formulario"><img src="./imagens/e-mail.png" alt="E-mail"></a>
         </div>
     </section>
 
@@ -180,13 +182,14 @@
     <section id="secao-formulario" class="secao-formulario">
         <div class="container-formulario">
             <h2>Agende sua Consulta</h2>
-            <p>Preencha os campos abaixo e entrarei em contato o mais breve possível.</p>
+            <p>Dar o primeiro passo para iniciar uma análise pode trazer dúvidas. Fique à vontade para enviar uma
+                mensagem ou agendar um horário; responderei com todo o cuidado necessário.</p>
 
             <form id="meu-formulario" class="formulario-contato">
 
                 <div class="campo">
                     <label for="nome">Nome completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                    <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
                 </div>
 
                 <div class="grupo-duplo">
@@ -197,23 +200,23 @@
 
                     <div class="campo">
                         <label for="telefone">Telefone / WhatsApp</label>
-                        <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
+                        <input type="tel" id="number" name="number" placeholder="(00) 00000-0000" required>
                     </div>
                 </div>
 
                 <div class="campo">
                     <label for="servico">Tipo de Atendimento</label>
-                    <select id="servico" name="servico" required>
+                    <select id="subject" name="subject" required>
                         <option value="" disabled selected>Selecione uma opção</option>
                         <option value="Psicoterapia">Psicoterapia</option>
-                        <option value="Avaliação Vocacional">Avaliação Vocacional</option>
+                        <option value="Orientação Vocacional">Orientação Vocacional</option>
                         <option value="Ambos / Tenho dúvidas">Ambos / Tenho dúvidas</option>
                     </select>
                 </div>
 
                 <div class="campo">
                     <label for="mensagem">Mensagem (opcional)</label>
-                    <textarea id="mensagem" name="mensagem" rows="4"
+                    <textarea id="message" name="message" rows="4"
                         placeholder="Escreva brevemente o motivo do contato..."></textarea>
                 </div>
 
@@ -222,11 +225,19 @@
                 <div id="mensagem-status" class="status-resposta"></div>
             </form>
         </div>
+
+        <div id="modal-erro" class="modal-overlay">
+            <div class="modal-conteudo">
+                <h3>Ops! Algo deu errado.</h3>
+                <p>Não foi possível enviar sua mensagem. Por favor, tente novamente em instantes.</p>
+                <button id="btn-fechar-modal" class="btn-modal" type="button">Entendi</button>
+            </div>
+        </div>
     </section>
 
     <footer class="footer">
         <div class="footer-logo">
-            <a href="#">Luiza psi</a>
+            <img src="./imagens/logo_Redes_sociais_branca_escrita.png" alt="Logo Luiza Martins" class="img-footer-logo">
         </div>
 
         <div class="footer-info">
@@ -252,23 +263,8 @@
     </footer>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-        let ultimaPosicaoScroll = window.scrollY;
-        const navbar = document.querySelector('.navbar');
-
-        window.addEventListener('scroll', () => {
-            const posicaoAtualScroll = window.scrollY;
-
-            if (posicaoAtualScroll > ultimaPosicaoScroll && posicaoAtualScroll > 80) {
-                navbar.classList.add('ocultar');
-            } else {
-                navbar.classList.remove('ocultar');
-            }
-
-            ultimaPosicaoScroll = posicaoAtualScroll;
-        });
-    </script>
+    <script src="./js/navbar.js"></script>
+    <script src="./js/formulario.js"></script>
 </body>
 
 </html>

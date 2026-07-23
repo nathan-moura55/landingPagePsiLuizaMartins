@@ -1,16 +1,31 @@
 (function() {
-    emailjs.init("");
+    emailjs.init("yEbios-kFmFzRQ7Q9");
 })();
 
 const form = document.getElementById('meu-formulario');
 const btnSubmit = document.getElementById('btn-submit');
 const statusMensagem = document.getElementById('mensagem-status');
 
+const modalErro = document.getElementById('modal-erro');
+const btnFecharModal = document.getElementById('btn-fechar-modal');
+
+if (btnFecharModal) {
+    btnFecharModal.addEventListener('click', function() {
+        modalErro.style.display = 'none';
+    });
+}
+
+window.addEventListener('click', function(event) {
+    if (event.target === modalErro) {
+        modalErro.style.display = 'none';
+    }
+});
+
 form.addEventListener('submit', function(event) {
     event.preventDefault(); 
 
-    const serviceID = '';
-    const templateID = '';
+    const serviceID = 'service_ot99val';
+    const templateID = 'template_zha68q9'; 
 
     btnSubmit.textContent = 'Enviando...';
     btnSubmit.disabled = true;
@@ -19,26 +34,19 @@ form.addEventListener('submit', function(event) {
     emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
             btnSubmit.textContent = 'Mensagem Enviada!';
-            btnSubmit.style.backgroundColor = '#28a745';
-            
-            statusMensagem.textContent = 'Obrigada! Sua mensagem foi enviada com sucesso.';
-            statusMensagem.style.color = '#28a745';
+            btnSubmit.style.backgroundColor = '#505E36';
+            btnSubmit.disabled = true;
 
             form.reset(); 
-
-            setTimeout(() => {
-                btnSubmit.textContent = 'Enviar Mensagem';
-                btnSubmit.disabled = false;
-                btnSubmit.style.backgroundColor = '';
-                statusMensagem.textContent = '';
-            }, 4000);
         })
         .catch((err) => {
             btnSubmit.textContent = 'Enviar Mensagem';
+            btnSubmit.style.backgroundColor = '#6D382D'; 
             btnSubmit.disabled = false;
             
-            statusMensagem.textContent = 'Ops! Houve um erro ao enviar. Tente novamente.';
-            statusMensagem.style.color = '#dc3545';
+            if (modalErro) {
+                modalErro.style.display = 'flex';
+            }
             
             console.error('Erro ao enviar pelo EmailJS:', err);
         });
