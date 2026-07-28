@@ -44,7 +44,7 @@
     width: 0%;
     height: 2px;
     background-color: #FFEBE8;
-    animation: loadingBar 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    animation: loadingBar 1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 #preloader.fade-out {
