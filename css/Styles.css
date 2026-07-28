@@ -136,7 +136,7 @@ h2, h3, h4, h5, h6 {
    3. SEÇÃO APRESENTAÇÃO
    ========================================== */
 .apresentacao {
-    background-image: url("../imagens/imagem1.jpg");
+    background-image: url("../imagens/imagem1.webp");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -160,10 +160,10 @@ h2, h3, h4, h5, h6 {
 }
 
 .logo-apresentacao {
-    width: 350px !important;       /* Aumentamos a largura para 350px */
-    max-width: none !important;    /* Remove qualquer limite de largura anterior */
-    height: auto !important;       /* Mantém a proporção sem distorcer */
-    max-height: none !important;   /* Remove qualquer limite de altura anterior */
+    width: 350px !important;       
+    max-width: none !important;    
+    height: auto !important;       
+    max-height: none !important;   
     display: block !important;
     margin: 0 auto 20px auto !important;
 }
@@ -358,7 +358,7 @@ h2, h3, h4, h5, h6 {
    6. SEÇÃO CONTATO 1
    ========================================== */
 .contato1 {
-    background-image: url("../imagens/imagem2.jpg");
+    background-image: url("../imagens/imagem2.webp");
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -446,7 +446,7 @@ h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../imagens/imagem3.jpg"); 
+    background-image: url("../imagens/imagem3.webp"); 
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
