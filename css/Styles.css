@@ -1,4 +1,77 @@
 /* ==========================================
+   PRELOADER COM FADE OUT & CENTRALIZADO
+   ========================================== */
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #6D382D; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 2s ease-in-out, visibility 2s ease-in-out;
+    will-change: opacity, visibility;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.preloader-title {
+    font-family: 'Inria Serif', serif;
+    font-weight: 400;
+    font-size: 3.5rem; 
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    margin: 0;
+    opacity: 1;
+    animation: fadeInText 0.10s ease forwards 0.5s;
+}
+
+.preloader-bar {
+    width: 0%;
+    height: 2px;
+    background-color: #FFEBE8;
+    animation: loadingBar 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes loadingBar {
+    0% { width: 0%; }
+    100% { width: 140px; }
+}
+
+@media (max-width: 768px) {
+    .preloader-title {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ==========================================
    1. FONTES E RESET
    ========================================== */
 
@@ -197,8 +270,6 @@ h2, h3, h4, h5, h6 {
     height: auto; 
     max-height: 75vh;
     object-fit: contain;
-    border-width: 10px;
-    border-color: #e0e0e0;
 
 }
 
