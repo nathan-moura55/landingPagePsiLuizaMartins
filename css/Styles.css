@@ -16,6 +16,13 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+section[id] {
+    scroll-margin-top: 80px; 
+}
 
 * {
     margin: 0;
