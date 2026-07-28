@@ -143,17 +143,31 @@ h2, h3, h4, h5, h6 {
    3. SEÇÃO APRESENTAÇÃO
    ========================================== */
 .apresentacao {
-    background-image: url("../imagens/imagem1.webp");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+    clip-path: inset(0 0 0 0);
+    overflow: hidden;
     width: 100%;
     min-height: 100vh; 
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px 20px 40px 20px; 
+    padding: 50px 20px 40px 20px;
+}
+
+.apresentacao::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../imagens/imagem1.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .conjunto-apresentacao {
@@ -164,6 +178,8 @@ h2, h3, h4, h5, h6 {
     gap: 60px; 
     width: 100%;
     max-width: 1200px;
+    position: relative;
+    z-index: 1;
 }
 
 .logo-apresentacao {
@@ -181,8 +197,9 @@ h2, h3, h4, h5, h6 {
     height: auto; 
     max-height: 75vh;
     object-fit: contain;
-    mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); 
+    border-width: 10px;
+    border-color: #e0e0e0;
+
 }
 
 .icone-detalhe {
@@ -365,11 +382,9 @@ h2, h3, h4, h5, h6 {
    6. SEÇÃO CONTATO 1
    ========================================== */
 .contato1 {
-    background-image: url("../imagens/imagem2.webp");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
+    position: relative;
+    clip-path: inset(0 0 0 0);
+    overflow: hidden;
     width: 100%;
     min-height: 100vh; 
     display: flex;
@@ -377,7 +392,23 @@ h2, h3, h4, h5, h6 {
     align-items: center;
     justify-content: space-around; 
     gap: 40px;
-    padding: 70px 10px 10px 10px; 
+    padding: 70px 10px 10px 10px;
+}
+
+.contato1::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../imagens/imagem2.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .conjunto-contato1 {
@@ -386,6 +417,12 @@ h2, h3, h4, h5, h6 {
     max-width: 500px;
     gap: 20px;
     color: #FFEBE8; 
+}
+
+.conjunto-contato1,
+.conjunto-contato1-icons {
+    position: relative;
+    z-index: 1;
 }
 
 .conjunto-contato1 h1 {
@@ -449,16 +486,30 @@ h2, h3, h4, h5, h6 {
    8. FORMULÁRIO DE CONTATO
    ========================================== */
 .secao-formulario {
+    position: relative;
+    clip-path: inset(0 0 0 0);
+    overflow: hidden;
     padding: 60px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("../imagens/imagem3.webp"); 
+    min-height: 80vh;
+}
+
+.secao-formulario::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../imagens/imagem3.webp");
     background-size: cover;
-    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 80vh; 
+    z-index: -1;
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .container-formulario {
@@ -470,6 +521,8 @@ h2, h3, h4, h5, h6 {
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 .container-formulario h2 {
@@ -703,9 +756,6 @@ h2, h3, h4, h5, h6 {
     text-decoration: underline;
 }
 
-/* ------------------------------------------
-   1. TABLETS E TELAS MÉDIAS (Até 1024px)
-   ------------------------------------------ */
 @media screen and (max-width: 1024px) {
 
     /* ------------------------------------------
@@ -723,7 +773,6 @@ h2, h3, h4, h5, h6 {
         display: none !important;
     }
 
-    /* Ícone Hambúrguer Flutuante */
     .hamburger-icon {
         display: flex !important;
         position: fixed !important;  
@@ -763,12 +812,11 @@ h2, h3, h4, h5, h6 {
     .icon-2.c { opacity: 0; }
     .icon-3.b { transform: rotate(-45deg); }
 
-    /* Gaveta Deslizante (Menu Mobile) */
     .nav-container {
         background: #505E36;
         position: fixed;
         top: 0;
-        right: -100%; /* Oculto fora da tela */
+        right: -100%; 
         height: 100vh;
         width: 80%;
         max-width: 380px;
@@ -852,7 +900,7 @@ h2, h3, h4, h5, h6 {
 
     .conjunto-apresentacao {
         display: flex !important;
-        flex-direction: column !important; /* Força tudo em coluna */
+        flex-direction: column !important; 
         align-items: center !important; 
         justify-content: center !important;
         text-align: center !important;
@@ -924,16 +972,15 @@ h2, h3, h4, h5, h6 {
     }
 
     .conjunto-contato1 {
-        background: transparent !important; /* Mantém o fundo original */
+        background: transparent !important; 
         padding: 0 !important;
         max-width: 700px !important;
         width: 100% !important;
         text-align: center !important;
     }
 
-    /* Fonte aumentada e destacada sobre o fundo original */
     .conjunto-contato1 h1 {
-        font-size: clamp(2.4rem, 7vw, 3.5rem) !important; /* Aumentado */
+        font-size: clamp(2.4rem, 7vw, 3.5rem) !important; 
         font-weight: 700 !important;
         margin-bottom: 20px !important;
         color: #ffffff !important;
@@ -941,14 +988,13 @@ h2, h3, h4, h5, h6 {
     }
 
     .conjunto-contato1 p {
-        font-size: clamp(1.2rem, 4vw, 1.6rem) !important; /* Aumentado */
+        font-size: clamp(1.2rem, 4vw, 1.6rem) !important; 
         font-weight: 500 !important;
         line-height: 1.6 !important;
         color: #ffffff !important;
         text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9) !important;
     }
 
-    /* Ícones de Contato Dimensionados */
     .conjunto-contato1-icons {
         display: flex !important;
         flex-direction: row !important;
