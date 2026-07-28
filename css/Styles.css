@@ -181,8 +181,8 @@ h2, h3, h4, h5, h6 {
     height: auto; 
     max-height: 75vh;
     object-fit: contain;
-    mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%); 
+    mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%); 
 }
 
 .icone-detalhe {
@@ -703,8 +703,10 @@ h2, h3, h4, h5, h6 {
     text-decoration: underline;
 }
 
-@media screen and (max-width: 1024px) and (orientation: portrait), 
-       screen and (max-width: 860px) {
+/* ------------------------------------------
+   1. TABLETS E TELAS MÉDIAS (Até 1024px)
+   ------------------------------------------ */
+@media screen and (max-width: 1024px) {
 
     .navbar {
         background-color: transparent !important;
@@ -719,26 +721,27 @@ h2, h3, h4, h5, h6 {
     }
 
     .hamburger-icon {
-    display: flex !important;
-    position: fixed !important;  
-    top: 20px !important;        
-    right: 20px !important;      
-    width: 48px;
-    height: 48px;
-    cursor: pointer;
-    border-radius: 50%;
-    background: rgba(62, 73, 41, 0.9) !important; 
-    backdrop-filter: blur(4px);
-    justify-content: center;
-    align-items: center;
-    z-index: 1005 !important;    
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
+        display: flex !important;
+        position: fixed !important;  
+        top: 20px !important;        
+        right: 20px !important;      
+        width: 48px;
+        height: 48px;
+        cursor: pointer;
+        border-radius: 50%;
+        background: rgba(62, 73, 41, 0.95) !important; 
+        backdrop-filter: blur(4px);
+        justify-content: center;
+        align-items: center;
+        z-index: 1005 !important;    
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-.hamburger-icon:hover {
-    transform: scale(1.08);
-}
+    .hamburger-icon:hover {
+        transform: scale(1.08);
+    }
+
     .icon-1, .icon-2, .icon-3 {
         position: absolute;
         width: 22px;
@@ -760,23 +763,28 @@ h2, h3, h4, h5, h6 {
         background: #505E36;
         position: fixed;
         top: 0;
-        right: 0;
+        right: -100%; 
         height: 100vh;
-        width: 0%;
+        width: 80%;
+        max-width: 380px;
         z-index: 999;
         opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
         overflow-y: auto;
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
         justify-content: flex-start !important;
         padding-top: 80px !important;
-        transition: all 600ms cubic-bezier(.62, .04, .3, 1.56);
+        transition: all 500ms cubic-bezier(.62, .04, .3, 1);
     }
 
     .nav-container.show {
-        width: 80%;
+        right: 0;
         opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .menu-mobile-logo {
@@ -811,24 +819,28 @@ h2, h3, h4, h5, h6 {
         display: block !important;
         position: fixed;
         top: 0;
-        right: 0;
+        right: -100%;
         background: #6D382D;
         height: 100vh;
-        width: 0%;
-        transition: all 500ms cubic-bezier(.62, .04, .3, 1.8);
+        width: 85%;
+        max-width: 400px;
+        transition: all 400ms cubic-bezier(.62, .04, .3, 1);
         z-index: 998;
         opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .dark-blue.slide {
-        width: 85%;
+        right: 0;
         opacity: 1;
+        visibility: visible;
     }
 
     .apresentacao,
     .contato1,
     .secao-formulario {
-        background-attachment: fixed !important;
+        background-attachment: scroll !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
@@ -836,9 +848,19 @@ h2, h3, h4, h5, h6 {
         min-height: auto !important;
     }
 
-    .apresentacao { padding: 60px 20px 40px 20px !important; }
-    .contato1 { padding: 60px 20px 40px 20px !important; }
-    .secao-formulario { padding: 60px 20px !important; }
+    .apresentacao,
+    .contato1,
+    .sobre-mim,
+    .psicanalise,
+    .sessoes,
+    .avaliação { 
+        padding: 70px 20px 40px 20px !important; 
+    }
+
+    .avaliacao-funcionamento {
+        padding: 60px 20px 40px 20px !important;
+        margin-bottom: 40px !important;
+    }
 
     .conjunto-apresentacao {
         display: flex !important;
@@ -854,9 +876,9 @@ h2, h3, h4, h5, h6 {
 
     .imgLuiza {
         width: 100% !important;
-        max-width: 320px !important;
+        max-width: 300px !important;
         height: auto !important;
-        max-height: none !important;
+        max-height: 45vh !important;
         margin: 0 auto !important;
         display: block !important;
     }
@@ -880,23 +902,6 @@ h2, h3, h4, h5, h6 {
         text-align: center !important;
         width: 100% !important;
         display: block !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .texto-apresentação h1 { font-size: 2.2rem !important; }
-    .texto-apresentação h2 { font-size: 1.3rem !important; }
-    .texto-apresentação h3 { font-size: 1rem !important; }
-    .texto-apresentação h4 { font-size: 0.95rem !important; }
-
-    .btn-agendar {
-        display: inline-block !important;
-        width: auto !important;
-        max-width: 280px !important;
-        margin: 15px auto 0 auto !important;
-        padding: 12px 30px !important;
-        font-size: 1.1rem !important;
-        text-align: center !important;
     }
 
     .colunas {
@@ -908,8 +913,8 @@ h2, h3, h4, h5, h6 {
 
     .foto-container {
         width: 100% !important;
-        max-width: 300px !important;
-        height: 380px !important; 
+        max-width: 350px !important;
+        height: 350px !important; 
         margin: 0 auto !important;
     }
 
@@ -929,6 +934,7 @@ h2, h3, h4, h5, h6 {
         flex-direction: column !important;
         align-items: center !important;
         text-align: center !important;
+        gap: 30px !important;
     }
 
     .coluna {
@@ -936,12 +942,8 @@ h2, h3, h4, h5, h6 {
         text-align: center !important;
     }
 
-    .grupo-duplo {
-        flex-direction: column !important;
-    }
-
     .footer {
-        padding: 30px 20px !important;
+        padding: 40px 20px !important;
         flex-direction: column !important;
         gap: 25px !important;
         text-align: center !important;
@@ -950,4 +952,76 @@ h2, h3, h4, h5, h6 {
 
     .footer-links { text-align: center !important; }
     .footer-logo { justify-content: center !important; }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .texto-apresentação h1 { font-size: 2.2rem !important; }
+    .texto-apresentação h2 { font-size: 1.3rem !important; }
+    .texto-apresentação h3 { font-size: 1rem !important; }
+    .texto-apresentação h4 { font-size: 0.95rem !important; }
+
+    .btn-agendar {
+        display: inline-block !important;
+        width: auto !important;
+        max-width: 280px !important;
+        margin: 15px auto 0 auto !important;
+        padding: 12px 30px !important;
+        font-size: 1.1rem !important;
+    }
+
+    .conjunto-contato1-icons {
+        gap: 30px !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .conjunto-contato1-icons img {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .conjunto-contato1 h1 { font-size: 2.2rem !important; }
+    .conjunto-contato1 p { font-size: 1.1rem !important; }
+
+    .secao-formulario {
+        padding: 40px 15px !important;
+    }
+
+    .container-formulario {
+        padding: 25px 18px !important;
+    }
+
+    .grupo-duplo {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+
+    .imgLuiza {
+        max-width: 240px !important;
+    }
+
+    .foto-container {
+        max-width: 280px !important;
+        height: 280px !important;
+    }
+
+    .frase-lacan,
+    .frase-saussure {
+        font-size: 1.4rem !important;
+    }
+
+    .ref-lacan,
+    .ref-saussure {
+        min-height: 50vh !important;
+    }
+
+    .container-formulario h2 {
+        font-size: 1.5rem !important;
+    }
 }
