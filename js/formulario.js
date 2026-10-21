@@ -1,45 +1,65 @@
-(function() {
-    emailjs.init("yEbios-kFmFzRQ7Q9");
-})();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('meu-formulario');
+    const btnSubmit = document.getElementById('btn-submit');
+    const statusMensagem = document.getElementById('mensagem-status');
+    const modalErro = document.getElementById('modal-erro');
+    const btnFecharModal = document.getElementById('btn-fechar-modal');
 
-const form = document.getElementById('meu-formulario');
-const btnSubmit = document.getElementById('btn-submit');
-const statusMensagem = document.getElementById('mensagem-status');
-
-const modalErro = document.getElementById('modal-erro');
-const btnFecharModal = document.getElementById('btn-fechar-modal');
-
-if (btnFecharModal) {
-    btnFecharModal.addEventListener('click', function() {
-        modalErro.style.display = 'none';
-    });
-}
-
-window.addEventListener('click', function(event) {
-    if (event.target === modalErro) {
-        modalErro.style.display = 'none';
+    // Alerta de depuração caso o formulário não seja encontrado
+    if (!form) {
+        console.error("Erro: O elemento #meu-formulario não foi encontrado no HTML!");
+        return;
     }
-});
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); 
+    if (btnFecharModal) {
+        btnFecharModal.addEventListener('click', function() {
+            if (modalErro) modalErro.style.display = 'none';
+        });
+    }
 
-    const serviceID = 'service_ot99val';
-    const templateID = 'template_zha68q9'; 
+    window.addEventListener('click', function(event) {
+        if (event.target === modalErro) {
+            modalErro.style.display = 'none';
+        }
+    });
 
-    btnSubmit.textContent = 'Enviando...';
-    btnSubmit.disabled = true;
-    statusMensagem.textContent = ''; 
+    form.addEventListener('submit', async function(event) {
+        // Impede o recarregamento padrão da página
+        event.preventDefault(); 
 
-    emailjs.sendForm(serviceID, templateID, this)
-        .then(() => {
-            btnSubmit.textContent = 'Mensagem Enviada!';
-            btnSubmit.style.backgroundColor = '#505E36';
-            btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Enviando...';
+        btnSubmit.disabled = true;
+        if (statusMensagem) statusMensagem.textContent = ''; 
+        
+        const formData = {
+            nome_completo: document.getElementById('name')?.value || '',
+            email: document.getElementById('email')?.value || '',
+            telefone: document.getElementById('number')?.value || '',
+            tipo_atendimento: document.getElementById('subject')?.value || '',
+            mensagem: document.getElementById('message')?.value || ''
+        };
 
-            form.reset(); 
-        })
-        .catch((err) => {
+        const API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'http://127.0.0.1:8000/api/agendamentos'
+            : '/api/agendamentos';
+
+        try {
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                btnSubmit.textContent = 'Mensagem Enviada!';
+                btnSubmit.style.backgroundColor = '#505E36';
+                form.reset(); 
+            } else {
+                throw new Error('Erro ao registrar no backend');
+            }
+        } catch (err) {
             btnSubmit.textContent = 'Enviar Mensagem';
             btnSubmit.style.backgroundColor = '#6D382D'; 
             btnSubmit.disabled = false;
@@ -48,6 +68,7 @@ form.addEventListener('submit', function(event) {
                 modalErro.style.display = 'flex';
             }
             
-            console.error('Erro ao enviar pelo EmailJS:', err);
-        });
+            console.error('Erro na requisição:', err);
+        }
+    });
 });
